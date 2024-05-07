@@ -1,0 +1,126 @@
+<div class="text-center">
+  <h1>Admin Dashboard</h1>
+</div>
+<div class="row row-cols-3 g-4 p-5">
+  <div class="col">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{ asset('build/images/hosp.jpg') }}"
+            alt="Hospital"
+            class="img-fluid rounded-start"
+            style="margin-top: 31px; margin-bottom: 20px"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p
+              class="card-title text-primary"
+              style="text-align: center; font-size: 40px; font-weight: bold"
+            >
+              2
+            </p>
+            <!-- Get total number of registered health facility -->
+            <p class="card-text" style="text-align: center">
+              No. of Registered Health Facility
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://images.template.net/84480/free-doctor-character-illustration-c9fbh.jpg"
+            alt="Doctor"
+            class="img-fluid rounded-start"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p
+              class="card-title text-primary"
+              style="text-align: center; font-size: 40px; font-weight: bold"
+            >
+              10
+            </p>
+            <!-- Get total number of registered medical staff in all of registered hospitals -->
+            <p class="card-text" style="text-align: center">
+              No. of Registered Medical Staff
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://img.freepik.com/premium-vector/doctor-visiting-senior-patient-ward-2d-vector-isolated-illustration_151150-10367.jpg"
+            alt="Patient"
+            class="img-fluid rounded-start"
+            style="margin-top: 29px; margin-bottom: 20px"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p
+              class="card-title text-primary"
+              style="text-align: center; font-size: 40px; font-weight: bold"
+            >
+              200
+            </p>
+            <!-- Get total number of registered patients in the system -->
+            <p class="card-text" style="text-align: center">
+              Total No. of Registered Patients
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Responsive needs to be fixed --->
+  <!-- Wrapper -->
+</div>
+
+<div class="card mb-1" style="height:70%'">
+  <img
+    class="card-img-top"
+    src="{{ asset('build/images/admin1.jpg')}}"
+    width=""
+    alt="Admin"
+    style="height: 80%"
+  />
+  <div class="card-body">
+    <h5 class="card-title text-primary">Municipality of Umingan</h5>
+    <!-- Get user -->
+    <p class="mb-4">Pangasinan City<!-- Get address --></p>
+    <a href="/admin/registered/hospital" class="btn btn-sm btn-outline-primary"
+      >View RHU</a
+    >
+    <!-- Link profile -->
+  </div>
+</div>
+
+<!-- Responsive needs to be fixed --->
+<!-- Wrapper -->
+
+<footer class="content-footer footer bg-footer-theme">
+  <div
+    class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column"
+  >
+    <div class="mb-2 mb-md-0">
+      ©
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      <a href="#" target="_blank" class="footer-link fw-bolder">PHIrecord</a>
+    </div>
+  </div>
+</footer>

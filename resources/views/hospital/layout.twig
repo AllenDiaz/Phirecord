@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="csrfName" name="{{ csrf.keys.name }}" content="{{ csrf.name }}">
+    <meta id="csrfValue" name="{{ csrf.keys.value }}" content="{{ csrf.value }}">
+    <title>{% block title %}Phirecord Hospital{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('build/images/logo.png') }}" />
+     {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('main') }}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('main') }}
+            {{ encore_entry_script_tags('config') }}
+            {{ encore_entry_script_tags('nav') }}
+        {% endblock %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar">
+        <div class="d-flex">
+          <button class="toggle-btn" type="button">
+       <box-icon name='dashboard' type='solid' rotate='270' color='#ffffff' ></box-icon>             </button>
+          <div class="sidebar-logo">
+          
+            <img src="{{ asset("build/images/logo.png") }}" alt="" width="60px" />
+            <a href="#"><span style="color: #5a7db8">PHI</span>record</a>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item sidebar__item {{ isActive.dashboard ? 'active' : '' }}">
+            <a href="/admin" class="sidebar-link">
+            <box-icon name='home-alt-2' type='solid' color='#ffffff' ></box-icon>        
+          <span>&nbsp;Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.profile ? 'active' : '' }}">
+            <a href="/hospital/profile" class="sidebar-link">
+              <box-icon name='user' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Profile</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.doctorRegister ? 'active' : '' }}">
+            <a href="/hospital/doctor/register" class="sidebar-link">
+              <i class='bx bx-plus-medical' style='color:#f9f2f2' ></i>
+              <span>&nbsp;Doctor Manual Registration</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.patientRegister ? 'active' : '' }}">
+            <a href="/hospital/patient/register" class="sidebar-link">
+              <i class='bx bx-male-female' style='color:#f9f2f2'  ></i>
+              <span>&nbsp;Patient Manual Registration</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown sidebar__multi {{ isActive.entity ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#entity"
+              aria-expanded="false"
+              aria-controls="entity"
+            >
+              <box-icon name='data' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Hospital Entity</span>
+            </a>
+            <ul
+              id="entity"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/doctor/view" class="sidebar-link {{ isActive.entityDoctor ? 'active-sub' : '' }}">Doctor</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/patient/view" class="sidebar-link {{ isActive.entityPatient ? 'active-sub' : '' }}">Patient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown sidebar__multi {{ isActive.entityPending ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#request"
+              aria-expanded="false"
+              aria-controls="request"
+            >
+              <box-icon name='id-card' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Hospital Entity Request</span>
+            </a>
+            <ul
+              id="request"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/doctor/pending" class="sidebar-link  {{ isActive.pendingDoctor ? 'active-sub' : '' }}">Pending Doctor</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/patient/pending" class="sidebar-link {{ isActive.pendingPatient ? 'active-sub' : '' }}">Pending Patient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown sidebar__multi {{ isActive.referral ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#record"
+              aria-expanded="false"
+              aria-controls="record"
+            >
+              <box-icon name='notepad' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Patient Referral</span>
+            </a>
+            <ul
+              id="record"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/refer/show" class="sidebar-link {{ isActive.referralPending ? 'active-sub' : '' }}">Referral Patient Request</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/refer/accepted/show" class="sidebar-link {{ isActive.referralAccepted ? 'active-sub' : '' }}">Referred Patient</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/refer/data/show" class="sidebar-link {{ isActive.referralHospital ? 'active-sub' : '' }}">Hospital Referred</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown sidebar__multi {{ isActive.patientRequest ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#recordRequest"
+              aria-expanded="false"
+              aria-controls="recordRequest"
+            >
+              <box-icon name='notepad' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Patient Record Request</span>
+            </a>
+            <ul
+              id="recordRequest"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/admissionform/request/view" class="sidebar-link {{ isActive.requestAdmission ? 'active-sub' : '' }}"> Admission Record Request</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/checkupform/request/view" class="sidebar-link {{ isActive.requestCheckup ? 'active-sub' : '' }}">Checkup Record Request</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/medicalform/request/view" class="sidebar-link {{ isActive.requestMedical ? 'active-sub' : '' }}">Medical Record Request</a>
+              </li>
+            </ul>
+          </li>
+
+            <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown {{ isActive.archiveDoctor ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#archivedDoctor"
+              aria-expanded="false"
+              aria-controls="archivedDoctor"
+            >
+              <box-icon name='archive' color="#ffffff"></box-icon>
+              <span>&nbsp;Archive Doctor</span>
+            </a>
+            <ul
+              id="archivedDoctor"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/doctor/accepted/archive" class="sidebar-link {{ isActive.archiveAcceptedDoctor ? 'active-sub' : '' }}">Archive Approve Doctor</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/doctor/declined/archive" class="sidebar-link {{ isActive.archiveDeclinedDoctor ? 'active-sub' : '' }}">Archive Declined Doctor</a>
+              </li>
+            </ul>
+          </li>
+      
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown {{ isActive.archivePatient ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#archivedPatient"
+              aria-expanded="false"
+              aria-controls="archivedPatient"
+            >
+              <box-icon name='archive' color="#ffffff"></box-icon>
+              <span>&nbsp;Archive Patient</span>
+            </a>
+            <ul
+              id="archivedPatient"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/hospital/patient/accepted/archive" class="sidebar-link {{ isActive.archiveAcceptedPatient ? 'active-sub' : '' }}">Archive Approve Patient</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/hospital/patient/declined/archive" class="sidebar-link {{ isActive.archiveDeclinedPatient ? 'active-sub' : '' }}">Archive Declined Patient</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="sidebar-item">
+            <a href="/hospital/changepassword" class="sidebar-link {{ isActive.changePassword ? 'active' : '' }}">
+              <box-icon name='cog' color='#ffffff' ></box-icon>
+              <span>&nbsp;Setting</span>
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a href="/hospital/logout" class="sidebar-link logout">
+           <box-icon name='log-out' color='#fafafa' ></box-icon>
+            <span>&nbsp; Logout</span>
+          </a>
+        </div>
+      </aside>
+
+    <div class="main">
+     <div class="card card-nav">
+      <div class="card-body d-flex justify-content-end">
+      <div class="dropdown user-dropdown-menu end " width="20px">
+                    <a href="#" class="text-decoration-none d-flex align-items-end" id="userDropDownMenu" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                      <box-icon name='user-circle' color='rgb(1 142 252)' ></box-icon>
+                        <span class="mr-3">{{ auth.name }}</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropDownMenu">
+                        <li>
+                       
+                              <a href="/hospital/logout">
+                                <button class="dropdown-item" href="#">Log Out</button>
+                              <a/>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'head_admin/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_hospital') }}
+{% endblock %}
+
+{% block title %}Registered Hospital{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+    <div class="hospital container content-body">
+    <h1 class="text-center mt-5">Registered Health Facilities</h1>
+    {% include 'admin/registered_hospital_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="registeredHospitalTable">
+        <thead>
+            <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Approved At</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

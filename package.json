@@ -1,0 +1,30 @@
+{
+  "name": "phirecord",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@popperjs/core": "^2.11.6",
+    "@symfony/webpack-encore": "^4.0.0",
+    "alertifyjs": "^1.13.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "boxicons": "^2.1.4",
+    "core-js": "^3.36.0",
+    "css-loader": "^6.9.1",
+    "datatables.net": "^1.13.1",
+    "datatables.net-dt": "^1.13.1",
+    "file-loader": "^6.2.0",
+    "jquery": "^3.7.1",
+    "material-design-icons": "^3.0.1",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.4",
+    "sweetalert2": "^11.6.13",
+    "webpack-notifier": "^1.15.0"
+  }
+}

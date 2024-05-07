@@ -1,0 +1,32 @@
+{% extends 'head_admin/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('approved_archive') }}
+{% endblock %}
+
+{% block title %}Archived Hospital{% endblock %}
+{% block content %}
+
+{# {% autoescape false %} #}
+    <div class="hospital container content-body">
+    <h1 class="text-center mt-5">Archived Approved Health Facilities</h1>
+    {% include 'admin/registered_hospital_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="approvedArchiveHospitalTable">
+        <thead>
+            <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Approved Date</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{# {% endautoescape %} #}
+    {% endblock %}

@@ -1,0 +1,271 @@
+{% extends 'hospital/layout.twig' %}
+
+{% block title %}Hospital Patient{% endblock %}
+
+
+{% block content %}
+
+ <div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication">
+      <!-- Register Card -->
+      <div class="card m-4">
+        <div class="card-body p-4">
+          <!-- Logo -->
+          <div class="app-brand">           
+            <div class="justify-content-center text-center mb-4">
+              <span class="app-brand-logo demo">
+                <img src="{{ asset('build/images/logo.png') }}" height="35" />
+              </span>
+              <span
+                class="app-brand-text demo fw-bolder ms-2"
+                style="
+                  text-transform: uppercase;
+                  color: #5a7db8;
+                  font-size: 19px;
+                "
+                >PHI</span
+              >
+              <span
+                class="app-brand-text demo menu-text fw-bolder ms-1"
+                style="font-size: 19px"
+                >record</span
+              >
+            </div>
+
+            <hr />
+
+            <center>
+              <h4 class="mb-2">Patient Registration</h4>
+              <p class="mb-4">Create Hospital Patient!</p>
+                 {{ html | raw}}
+            </center>
+
+            <!-- Form -->
+            <form id="register_admin" class="mb-3" action="/hospital/patient/register" method="POST" enctype="multipart/form-data"
+            >
+            {{ csrf.fields | raw }}
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      value="{{ old.name }}"
+                      placeholder="Enter your name {{ errors.name ? 'is-invalid' : '' }}"
+                      autofocus
+                      required
+                    />
+                      <div class="invalid-feedback">
+                          {{ errors.name | first }}
+                    </div>
+                  </div>
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="Date of Birth" class="form-label"
+                      >Date of Birth</label
+                    >
+                    <input
+                      type="date"
+                      class="form-control {{ errors.birthdate ? 'is-invalid' : '' }}"
+                      id="birthdate"
+                      value="{{ old.birthdate }}"
+                      name="birthdate"
+                      required
+                    />
+                      <div class="invalid-feedback">
+                          {{ errors.birthdate | first }}
+                    </div>
+                  </div>
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="Sex" class="form-label">Sex</label>
+                    <select name="sex" class="form-control" id="sex" class="{{ errors.sex ? 'is-invalid' : '' }}">
+                      <option value="">Select sex...</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                       <div class="invalid-feedback">
+                          {{ errors.sex | first }}
+                    </div>
+                  </div>
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="Address" class="form-label">Address</label>
+                    <!-- You will use the get value here in hospital dashboard (Just the brgy)-->
+                    <input
+                      type="text"
+                      class="form-control {{ errors.address ? 'is-invalid' : '' }}"
+                      id="address"
+                      name="address"
+                      value="{{ old.address }}"
+                      placeholder="Enter your address"
+                      autofocus
+                      required
+                    />
+                      <div class="invalid-feedback">
+                          {{ errors.address | first }}
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Contact No" class="form-label"
+                      >Contact No.</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control {{ errors.contactNo ? 'is-invalid' : '' }}"
+                      id="contactNo"
+                      name="contactNo"
+                      value="{{ old.contactNo }}"
+                      placeholder="(e.g. 09xxxxxxxxx)"
+                      autofocus
+                      required
+                    />
+                     <div class="invalid-feedback">
+                          {{ errors.contactNo | first }}
+                    </div>
+                  </div>
+                     <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input
+                      type="email"
+                      class="form-control {{ errors.email ? 'is-invalid' : '' }}"
+                      value="{{ old.email }}"
+                      id="email"
+                      name="email"
+                      placeholder="(e.g. user@gmail.com)"
+                      autofocus
+                      required
+                    />
+                    <div class="invalid-feedback">
+                          {{ errors.email | first }}
+                    </div>
+                  </div>
+
+              </div>
+
+                <div class="col-6">
+
+                   <div class="mb-3">
+                    <label for="Name" class="form-label">Philheath No. (optional)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="philhealthNo"
+                      name="philhealthNo"
+                      placeholder="Enter Philhealth No."
+                      autofocus
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Contact No" class="form-label"
+                      >Name of Guardian (optional)
+                      <i
+                        ><br>Note: Please provide the name of your guardian if you are 18
+                        years old below or a senior citizen</i
+                      >
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="guardianName"
+                      name="guardianName"
+                      placeholder="Enter your guaridian's name"
+                      autofocus
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Contact No" class="form-label"
+                      >Contact No. of Guardian
+                      <i
+                        >(Please provide the contact no. of your guardian if you
+                        are 18 years old below or a senior citizen)</i
+                      >
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="contact_guard"
+                      name="contactGuard"
+                      placeholder="(e.g. 09xxxxxxxxx)"
+                      autofocus
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="id" class="form-label"
+                      >Government ID
+                      <i
+                        >(Please provide the photo of your guadian's id if you
+                        are 18 years old below or a senior citizen.)</i
+                      >
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="govId"
+                      name="govId"
+                      required
+                    />
+                  </div>
+
+                    <div class="mb-3 form-password-toggle">
+                      <label class="form-label" for="password">Password</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control password {{ errors.password ? 'is-invalid' : '' }}"
+                          name="password"
+                          placeholder="Password"
+                          aria-describedby="password"
+                          required
+                        />
+                        <span class="input-group-text cursor-pointer"
+                          ><i class="eye-password-icon bx bx-hide"></i
+                        ></span>
+                        <div class="invalid-feedback">
+                          {{ errors.password | first }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                      <label class="form-label" for="password">Confirm Password</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control confirm-password {{ errors.confirmPassword ? 'is-invalid' : '' }}"
+                          name="confirmPassword"
+                          placeholder="Confirm Password"
+                          aria-describedby="password"
+                          required
+                        />
+                        <span class="input-group-text cursor-pointer"
+                          ><i class="eye-cpassword-icon bx bx-hide"></i
+                        ></span>
+                        <div class="invalid-feedback">
+                          {{ errors.confirmPassword | first }}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <button class="btn btn-primary d-grid w-50 mx-auto">Add Patient</button>
+            </form>
+            <center>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

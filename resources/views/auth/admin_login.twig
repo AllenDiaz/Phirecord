@@ -1,0 +1,104 @@
+{% extends 'auth/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('auth_admin') }}
+{% endblock %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+
+<!-- Content -->
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication">
+      <!-- Register Card -->
+      <div class="card p-2" style="width: 580px; height: 520px;">
+        <div class="card-body">
+          <!-- Logo -->
+          
+          <div>
+
+            <div class="app-brand justify-content-center text-center mb-4">
+              <span class="app-brand-logo demo">
+                <img src="{{ asset('build/images/logo.png') }}" height="35" />
+              </span>
+              <span
+                class="app-brand-text demo fw-bolder ms-2"
+                style="
+                  text-transform: uppercase;
+                  color: #5a7db8;
+                  font-size: 19px;
+                "
+                >PHI</span
+              >
+              <span
+                class="app-brand-text demo menu-text fw-bolder ms-1"
+                style="font-size: 19px"
+                >record</span
+              >
+            </div>
+          </div>
+
+          <hr />
+
+          <center>
+            <h4 class="mb-2">Admin Login</h4>
+            <p class="mb-4">Sign in to login on your account!</p>
+          </center>
+
+          <div class="row">
+            <!-- Form -->
+            <form
+              id=""
+              action="/admin/login"
+              method="post"
+              class="mb-3 login-form"
+                            
+            >
+              <div class="mb-3">
+                <label for="Email" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter you email address"
+                  autofocus
+                  required
+                 
+                />
+              </div>
+
+              <div class="mb-5 form-password-toggle">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-group input-group-merge">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control password "
+                    name="password"
+                    placeholder="Password"
+                    aria-describedby="password"
+                    required
+                  />
+                  <span class="input-group-text cursor-pointer"
+                    ><i class="eye-password-icon bx bx-hide"></i
+                  ></span>
+                </div>
+              </div>
+              
+              <button class="btn btn-primary d-grid w-100 log-in-btn" type="button">Sign in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   {% include 'auth/two_factor_modal.twig' %}
+</div>
+
+    
+
+{% endblock %}

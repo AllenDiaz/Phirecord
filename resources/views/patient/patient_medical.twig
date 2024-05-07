@@ -1,0 +1,31 @@
+{% extends 'patient/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('patient_patient_medical') }}
+{% endblock %}
+
+{% block title %}Patient{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">Medical Record</h1>
+     {% include 'patient/medical_form_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="patientMedicalTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Hospital</th>
+            <th>Certificate Issued</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

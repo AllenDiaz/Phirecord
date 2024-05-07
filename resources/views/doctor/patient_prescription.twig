@@ -1,0 +1,36 @@
+{% extends 'doctor/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('patient_prescription') }}
+{% endblock %}
+
+{% block title %}Patient{% endblock %}
+{% block content %}
+
+
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5"> Checkup Prescription </h1>
+    {# {% include 'checkup_form/checkup_pending_modal.twig' with {modal: {title: 'Create Transaction', id: 'newTransactionModal', isEdit: false}} %}
+    {% include 'checkup_form/prescription_modal.twig' with {modal: {title: 'Edit Prescription', id: 'editTransactionModal', isEdit: true}} %} #}
+    {% include 'checkup_form/checkup_pending_modal.twig' %}
+    {% include 'checkup_form/prescription_modal.twig' %}
+    {# {% include 'checkup_form/prescription_modal.twig' %} #}
+    {% include 'doctor/doctor_prescription_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="patientPrescriptionTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Contact</th>
+            <th>Hospital</th>
+            <th>Checkup Issued</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+
+    {% endblock %}

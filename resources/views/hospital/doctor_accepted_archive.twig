@@ -1,0 +1,32 @@
+{% extends 'hospital/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('doctor_accepted_archive') }}
+{% endblock %}
+
+{% block title %}Archived Doctor{% endblock %}
+{% block content %}
+
+{# {% autoescape false %} #}
+    <div class="patient container content-body">
+    <h1 class="text-center mt-5">Archived Approved Doctor</h1>
+    {% include 'hospital/hospital_doctor_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="doctorAcceptedArchiveTable">
+        <thead>
+            <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Approved Date</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{# {% endautoescape %} #}
+    {% endblock %}

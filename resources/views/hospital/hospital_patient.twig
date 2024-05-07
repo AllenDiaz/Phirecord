@@ -1,0 +1,36 @@
+{% extends 'hospital/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('hospital_patient') }}
+{% endblock %}
+
+{% block title %}Hospital Patient{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">Registered Patient</h1>
+    {% include 'hospital/hospital_patient_modal.twig' %}
+    {% include 'patient/admission_form_modal.twig' %}
+    {% include 'patient/checkup_form_modal.twig' %}
+    {% include 'patient/medical_modal.twig' %}
+    {% include 'patient/referral_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="hospitalPatientTable">
+        <thead>
+            <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Approved At</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

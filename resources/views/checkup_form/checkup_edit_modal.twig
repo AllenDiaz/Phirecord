@@ -1,0 +1,213 @@
+<div class="modal fade" id="editCheckupModal"tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 670px;">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Checkup Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <div class="card m-4" >
+        <div class="card-body p-4">
+          <!-- Logo -->
+          <div class="app-brand">           
+            <div class="justify-content-center text-center mb-4">
+              <span class="app-brand-logo demo">
+                <img src="{{ asset('build/images/logo.png') }}" height="35" />
+              </span>
+              <span
+                class="app-brand-text demo fw-bolder ms-2"
+                style="
+                  text-transform: uppercase;
+                  color: #5a7db8;
+                  font-size: 19px;
+                "
+                >PHI</span
+              >
+              <span
+                class="app-brand-text demo menu-text fw-bolder ms-1"
+                style="font-size: 19px"
+                >record</span
+              >
+            </div>
+
+            <hr />
+
+            <center>
+              <h4 class="mb-2">Edit Checkup Form</h4>
+              <p class="mb-4 hospital-name"></p>
+            </center>
+              <div class="d-flex">
+            <p class="mb-2">Name of Patient:&nbsp;</p>
+            <p id="patientName"></p>
+            </div>
+            <div class="d-flex">
+            <p class="mb-2">Gender: &nbsp;</p>
+            <p id="patientGender"></p>
+            </div>
+            <div class="d-flex">
+            <p class="mb-2">Age: &nbsp;</p>
+            <p id="patientAge"></p>
+            </div>
+            <div class="d-flex">
+            <p class="mb-2">Address: &nbsp;</p>
+            <p id="patientAddress"></p>
+            </div>
+
+
+            <!-- Form -->
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="confineDate" class="form-label">Estimated Confine Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="confineDate"
+                      name="confineDate"
+                      autofocus
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="checkupDate" class="form-label">Checkup Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="checkupDate"
+                      name="checkupDate"
+                      autofocus
+                      required
+                    />
+                  </div>
+
+                <div class="mb-3">
+                  <label for="doctor" class="form-label">Hospital Doctor</label>
+                   <select
+                    name="doctor"
+                    class="form-control"
+                    id="doctor"
+                    name="doctor"
+                  >
+                    <!-- In this part, you need to get the value of the registered hospitals in the system. Only those registered will be shown here. -->
+                    <option value="">Select Patient Doctor</option>
+                      {% for doctor in doctors %}
+                            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                        {% endfor %}
+                  </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="familyMember" class="form-label">Family Member</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="familyMember"
+                      name="familyMember"
+                      placeholder="Enter Patient Family Member"
+                      autofocus
+                      required
+                    />
+                  </div>
+
+                     <input
+                      id="patient"
+                      type="hidden"
+                      name="patient"
+                      value=""
+                    />
+
+                    <div class="mb-3">
+                    <label for="menstrualDate" class="form-label">Last Menstrual Date(For Female)</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="menstrualDate"
+                      name="menstrualDate"
+                      autofocus
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="fetalHeartTones" class="form-label">Fetal Heart Tones</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fetalHeartTones"
+                      name="fetalHeartTones"
+                      placeholder="(e.g. 90 bpm)"
+                      autofocus
+                      required
+                    />
+                  </div>
+                  
+                    <div class="mb-3">
+                    <label for="gravida" class="form-label">Gravida (For Female)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="gravida"
+                      name="gravida"
+                      placeholder="Number of pregnancy "
+                      autofocus
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="para" class="form-label">Para (For Female)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="para"
+                      name="para"
+                      placeholder="Number of Birth"
+                      autofocus
+                      required
+                    />
+                  </div>
+
+              </div>
+
+                <div class="col-6">
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="labaratory" class="form-label">Labaratory Notes (N/A if not examine)</label>
+                    <textarea class="form-control" id="labaratory" name="labaratory" rows="5" placeholder="Write The Labaratory Notes of Patient"></textarea>
+                  </div>
+                
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="urinalysis" class="form-label">Urinalysis Notes (N/A if not examine)</label>
+                    <textarea class="form-control" id="urinalysis" name="urinalysis" rows="5" placeholder="Write The Urinalysis Notes of Patient"></textarea>
+                  </div>
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="bloodCount" class="form-label">Blood Count Notes (N/A if not examine)</label>
+                    <textarea class="form-control" id="bloodCount" name="bloodCount" rows="5" placeholder="Write The Blood Count Notes of Patient"></textarea>
+                  </div>
+
+                  <div class="mb-3" style="margin-top: 32px">
+                    <label for="fecalysis" class="form-label">Fecalysis Notes (N/A if not examine)</label>
+                    <textarea class="form-control" id="fecalysis" name="fecalysis" rows="5" placeholder="Write The Fecalysis Notes of Patient"></textarea>
+                  </div>
+
+                    </div>
+                </div>
+              </div>
+              <button class="btn btn-primary d-grid w-50 mx-auto save-checkup-btn" type="button">Save</button>
+            <center>
+            </center>
+          </div>
+        </div>
+      </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i>
+                    Close
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+

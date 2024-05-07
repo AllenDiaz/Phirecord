@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="csrfName" name="{{ csrf.keys.name }}" content="{{ csrf.name }}">
+    <meta id="csrfValue" name="{{ csrf.keys.value }}" content="{{ csrf.value }}">
+    <title>{% block title %}Phirecord Hospital Pending{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('build/images/logo.png') }}" />
+     {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('main') }}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('main') }}
+            {{ encore_entry_script_tags('config') }}
+            {{ encore_entry_script_tags('nav') }}
+        {% endblock %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar">
+        <div class="d-flex">
+          <button class="toggle-btn" type="button">
+       <box-icon name='dashboard' type='solid' rotate='270' color='#ffffff' ></box-icon>             </button>
+          <div class="sidebar-logo">
+          
+            <img src="{{ asset("build/images/logo.png") }}" alt="" width="60px" />
+            <a href="#"><span style="color: #5a7db8">PHI</span>record</a>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item sidebar__item {{ isActive.dashboard ? 'active' : '' }}">
+            <a href="/admin" class="sidebar-link">
+            <box-icon name='home-alt-2' type='solid' color='#ffffff' ></box-icon>        
+          <span>&nbsp;Dashboard</span>
+            </a>
+          </li>
+       
+        </ul>
+        <div class="sidebar-footer">
+          <a href="/hospital/pending/logout" class="sidebar-link logout">
+           <box-icon name='log-out' color='#fafafa' ></box-icon>
+            <span>&nbsp; Logout</span>
+          </a>
+        </div>
+      </aside>
+
+    <div class="main">
+     <div class="card card-nav">
+      <div class="card-body d-flex justify-content-end">
+      <div class="dropdown user-dropdown-menu end " width="20px">
+                    <a href="#" class="text-decoration-none d-flex align-items-end" id="userDropDownMenu" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                      <box-icon name='user-circle' color='rgb(1 142 252)' ></box-icon>
+                        <span class="mr-3">{{ auth.name }}</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropDownMenu">
+                        <li>
+                       
+                              <a href="/hospital/pending/logout">
+                                <button class="dropdown-item" href="#">Log Out</button>
+                              <a/>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    </div>
+    </div>
+    </body>
+</html>

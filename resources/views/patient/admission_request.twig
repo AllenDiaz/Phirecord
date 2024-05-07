@@ -1,0 +1,32 @@
+{% extends 'patient/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('patient_request_admission') }}
+{% endblock %}
+
+{% block title %}Admission Request{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">Requested Admission</h1>
+    {% include 'admission_form/admission_form_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="patientRequestAdmissionTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Hospital</th>
+            <th>Reference Code</th>
+            <th>Request Date</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

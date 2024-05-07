@@ -1,0 +1,31 @@
+{% extends 'doctor/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('doctor_patient_admission') }}
+{% endblock %}
+
+{% block title %}Patient{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">Admission Record</h1>
+    {% include 'admission_form/admission_form_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="patientAdmissionTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Contact</th>
+            <th>Hospital</th>
+            <th>Admission Date</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/layout.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block content %}
+
+
+      <!-- main -->
+
+      <div class="main p-3">
+        <div class="mt-5 ml-5">
+          <h1 class="mx-3">Admin Profile</h1>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div
+            class="profile-card col-9 my-1 d-flex justify-content-between mx-5"
+            >
+              <div class="d-flex flex-column">
+               <img src="/img/admin/{{ admin.profileImage }}" alt="" class="profile-pic" />
+                <h4 class="my-3">{{ admin.name }}</h4>
+                <h5>Details:</h5>
+                <p class="ms-3">
+                  Email:
+                  <span class="gray">{{ admin.email }}</span>
+                </p>
+                <p class="ms-3">
+                  Number:
+                  <span class="gray">{{ admin.contactNumber }}</span>
+                </p>
+                <p class="ms-3">
+                  Address: 
+                  <span class="gray">{{ admin.address }}</span>
+                </p>
+                <p class="ms-3">
+                  Birthdate: <span class="gray">{{ admin.birthdate|date("m/d/Y") }}</span>
+                </p>
+                <p class="ms-3">Sex: <span class="gray">{{ admin.gender }}</span></p>
+              </div>
+              <div class="d-flex flex-column justify-content-between">
+                <p class="gray">{{ auth.name}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6"></div>
+        </div>
+      </div>
+
+
+{% endblock %}

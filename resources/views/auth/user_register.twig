@@ -1,0 +1,55 @@
+{% extends 'auth/layout.twig' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+
+<body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+      <div class="container">
+        <div class="card login-card">
+          <div class="row no-gutters">
+            <div class="col-md-6">
+              <img src="{{ asset('build/images/phirecord.png') }}" alt="logo" class="login-card-img" style="height: auto; width: 100%;">
+            </div>
+
+            <div class="col-md-6">
+              <div class="card-body">
+                <center> <br><br>
+                  <h3>USER REGISTRATION</h3>
+                </center>
+                  
+                  <br><br>
+                  <p><i>Register as:</i></p>
+                  <br>
+
+                <center>
+
+                  <form action="" method="POST">
+                    <div style="padding-left: 55px; padding-right: 55px;">
+                      <a href="/hospital/register" class="btn btn-lg btn-primary d-grid w-100">Health Facility</a> <br>
+                      <a href="/doctor/register" class="btn btn-lg btn-primary d-grid w-100">Medical Staff</a> <br>
+                      <a href="/patient/register" class="btn btn-lg btn-primary d-grid w-100">Patient</a> 
+                    </div>
+
+                    <p class="text-center"> <br>
+                      <span>Already have an account?</span>
+                      <a href="/user/login">
+                        <span>Sign in instead</span>
+                      </a>
+                    </p>
+                    <br>
+                  </div>
+                  </form>
+              
+                </center>
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'head_admin/layout.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block content %}
+
+
+      <!-- main -->
+
+      {# <div class="main"> #}
+      {# <div class="card card-nav">
+      <div class="card-body d-flex justify-content-end">
+      <div class="dropdown user-dropdown-menu end " width="20px">
+                    <a href="#" class="text-decoration-none d-flex align-items-end" id="userDropDownMenu" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                      <box-icon name='user-circle' color='rgb(1 142 252)' ></box-icon>
+                        <span class="mr-3">{{ auth.name }}</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropDownMenu">
+                        <li>
+                            <form action="/admin/logout" method="post">
+                                {{ csrf.fields | raw }}
+                                <button class="dropdown-item" href="#">Log Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div> #}
+        <div class="mt-5 ml-5">
+          <h1 class="mx-3">Admin Profile</h1>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div
+            class="profile-card col-9 my-1 d-flex justify-content-between mx-5"
+            >
+              <div class="d-flex flex-column">
+                <img src="/img/admin/{{ admin.profileImage }}" alt="" class="profile-pic" />
+                <h4 class="my-3">{{ admin.name }}</h4>
+                <h5>Details:</h5>
+                <p class="ms-3">
+                  Email:
+                  <span class="gray">{{ admin.email }}</span>
+                </p>
+                <p class="ms-3">
+                  Number:
+                  <span class="gray">{{ admin.contactNumber }}</span>
+                </p>
+                <p class="ms-3">
+                  Address: 
+                  <span class="gray">{{ admin.address }}</span>
+                </p>
+                <p class="ms-3">
+                  Birthdate: <span class="gray">{{ admin.birthdate|date("m/d/Y") }}</span>
+                </p>
+                <p class="ms-3">Sex: <span class="gray">{{ admin.gender }}</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6"></div>
+        </div>
+      {# </div> #}
+
+
+{% endblock %}
+

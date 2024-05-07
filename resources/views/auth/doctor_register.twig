@@ -1,0 +1,255 @@
+{% extends 'auth/layout.twig' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+
+ <!-- Content -->
+ <div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication">
+      <!-- Register Card -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Logo -->
+          <div class="app-brand justify-content-center mb-4">
+            <span class="app-brand-logo demo">
+              <img src="{{ asset('build/images/logo.png') }}" height="35" />
+            </span>
+            <span
+              class="app-brand-text demo fw-bolder ms-2"
+              style="text-transform: uppercase; color: #5a7db8; font-size: 19px"
+              >PHI</span
+            >
+            <span
+              class="app-brand-text demo menu-text fw-bolder ms-1"
+              style="font-size: 19px"
+              >record</span
+            >
+          </div>
+
+          <hr />
+
+          <center>
+            <h4 class="mb-2">Medical Staff Registration</h4>
+            <p class="mb-4">Sign up to create an account!</p>
+          </center>
+
+            <!-- Form -->
+            <form id="register_admin" 
+            class="mb-3" 
+            action="/doctor/register" 
+            method="POST" 
+            enctype="multipart/form-data">
+            {{ csrf.fields | raw }}
+            <div class="row">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="Name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control {{ errors.name ? 'is-invalid' : '' }}"
+                    id="name"
+                    name="name"
+                     value="{{ old.name }}"
+                    placeholder="Enter your name"
+                    autofocus
+                    required
+                  />
+                      <div class="invalid-feedback">
+                          {{ errors.name | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Date of Birth" class="form-label"
+                    >Date of Birth</label
+                  >
+                  <input
+                    type="date"
+                    value="{{ old.birthdate }}"
+                    class="form-control {{ errors.birthdate ? 'is-invalid' : '' }}"
+                    id="birthdate"
+                    name="birthdate"
+                    required
+                  />
+                    <div class="invalid-feedback">
+                          {{ errors.birthdate | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Sex" class="form-label">Sex</label>
+                  <select name="sex" class="form-control {{ errors.sex ? 'is-invalid' : '' }}" id="sex" name="sex">
+                    <option value="">Select sex...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                  <div class="invalid-feedback">
+                          {{ errors.sex | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Address" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    class="form-control {{ errors.address ? 'is-invalid' : '' }}"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    autofocus
+                    required
+                  />
+                      <div class="invalid-feedback">
+                          {{ errors.address | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Health Facility" class="form-label"
+                    >Health Facility</label
+                  >
+                  <select
+                    name="hospital"
+                    class="form-control {{ errors.hospital ? 'is-invalid' : '' }}"
+                    id="hospital"
+                    name="hospital"
+                  >
+                    <!-- In this part, you need to get the value of the registered hospitals in the system. Only those registered will be shown here. -->
+                    <option value="">Select Health Facility...</option>
+                      {% for hospital in hospitals %}
+                            <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                        {% endfor %}
+                  </select>
+                </div>
+                    <div class="invalid-feedback">
+                          {{ errors.hospital | first }}
+                    </div>
+                </div>
+
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    class="form-control {{ errors.email ? 'is-invalid' : '' }}"
+                    id="email"
+                    value="{{ old.email }}"
+                    name="email"
+                    placeholder="(e.g. user@gmail.com)"
+                    autofocus
+                    required
+                  />
+                    <div class="invalid-feedback">
+                          {{ errors.email | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Contact No" class="form-label">Contact No.</label>
+                  <input
+                    type="text"
+                    class="form-control {{ errors.contactNo ? 'is-invalid' : '' }}"
+                    id="contact"
+                    value="{{ old.contactNo }}"
+                    name="contactNo"
+                    placeholder="(e.g. 09xxxxxxxxx)"
+                    autofocus
+                    required
+                  />
+                   <div class="invalid-feedback">
+                        {{ errors.contactNo | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="id" class="form-label">Government ID</label>
+                  <input
+                    type="file"
+                    class="form-control {{ errors.govId ? 'is-invalid' : '' }}"
+                    id="gov_id"
+                    name="govId"
+                    required
+                  />
+                    <div class="invalid-feedback">
+                        {{ errors.govId | first }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="proof" class="form-label"
+                    >Proof of Employment</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control {{ errors.proof ? 'is-invalid' : '' }}"
+                    id="proof"
+                    name="proof"
+                    required
+                  /> 
+                    <div class="invalid-feedback">
+                        {{ errors.proof | first }}
+                    </div>   
+                </div>
+
+                <div class="mb-3 form-password-toggle">
+                      <label class="form-label" for="password">Password</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control password {{ errors.password ? 'is-invalid' : '' }}"
+                          name="password"
+                          placeholder="Password"
+                          aria-describedby="password"
+                          required
+                        />
+                        <span class="input-group-text cursor-pointer"
+                          ><i class="eye-password-icon bx bx-hide"></i
+                        ></span>
+                        <div class="invalid-feedback">
+                          {{ errors.password | first }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                      <label class="form-label" for="password">Confirm Password</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control confirm-password {{ errors.confirmPassword ? 'is-invalid' : '' }}"
+                          name="confirmPassword"
+                          placeholder="Confirm Password"
+                          aria-describedby="password"
+                          required
+                        />
+                        <span class="input-group-text cursor-pointer"
+                          ><i class="eye-cpassword-icon bx bx-hide"></i
+                        ></span>
+                        <div class="invalid-feedback">
+                          {{ errors.confirmPassword | first }}
+                        </div>
+                      </div>
+                    </div>
+          <button class="btn btn-primary d-grid w-100">Sign up</button>
+              </form>
+              </div>
+          </div>
+
+          <p class="text-center">
+            <span>Already have an account?</span>
+            <a href="/doctor/login">
+              <span>Sign in instead</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- / Content -->
+
+{% endblock %}

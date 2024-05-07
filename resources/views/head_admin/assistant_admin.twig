@@ -1,0 +1,32 @@
+{% extends 'head_admin/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('assistant_admin') }}
+{% endblock %}
+
+{% block title %}Assitant admin{% endblock %}
+{% block content %}
+
+{# {% autoescape false %} #}
+    <div class="admin container content-body">
+    <h1 class="text-center mt-5">Assistant Admin List</h1>
+     {% include 'head_admin/registered_admin_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="registeredAdminTable">
+        <thead>
+            <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{# {% endautoescape %} #}
+    {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'hospital/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('patient_referral') }}
+{% endblock %}
+
+{% block title %}Patient Referral{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">Referral Request</h1>
+          <div class="text-start mb-1">
+        </div>
+    <div class="my-4 p-4">
+        <table id="patientReferralTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Hospital</th>
+            <th>Referral Code</th>
+            <th>Date of Request</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

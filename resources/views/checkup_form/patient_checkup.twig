@@ -1,0 +1,38 @@
+{% extends 'hospital/layout.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('patient_checkup') }}
+{% endblock %}
+
+{% block title %}Patient{% endblock %}
+{% block content %}
+
+{% autoescape false %}
+<div class="hospital container content-body">
+    <h1 class="text-center mt-5">{{ patientName }} Checkup Record</h1>
+          <div class="text-start mb-1">
+              {{hospitalPatient ? '      <a href="/hospital/patient/view">
+            <button class="btn btn-primary"> <i class="bi bi-arrow-return-left"></i> Back</button>
+          </a>' : ' <a href="/hospital/refer/accepted/show">
+            <button class="btn btn-primary"> <i class="bi bi-arrow-return-left"></i> Return</button>
+          </a>'}}
+        </div>
+        {% include 'checkup_form/checkup_edit_modal.twig' %}
+    <div class="my-4 p-4">
+        <table id="patientCheckupTable">
+        <thead>
+            <tr>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Hospital</th>
+            <th>Checkup Date</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    </div>
+{% endautoescape %}
+    {% endblock %}

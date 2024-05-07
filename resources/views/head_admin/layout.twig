@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="csrfName" name="{{ csrf.keys.name }}" content="{{ csrf.name }}">
+    <meta id="csrfValue" name="{{ csrf.keys.value }}" content="{{ csrf.value }}">
+    <title>{% block title %}Head Admin{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('build/images/logo.png') }}" />
+     {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('main') }}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('main') }}
+            {{ encore_entry_script_tags('config') }}
+            {{ encore_entry_script_tags('nav') }}
+        {% endblock %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar">
+        <div class="d-flex">
+          <button class="toggle-btn" type="button">
+       <box-icon name='dashboard' type='solid' rotate='270' color='#ffffff' ></box-icon>             </button>
+          <div class="sidebar-logo">
+          
+            <img src="{{ asset("build/images/logo.png") }}" alt="" width="60px" />
+            <a href="#"><span style="color: #5a7db8">PHI</span>record</a>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item sidebar__item {{ isActive.dashboard ? 'active' : '' }}">
+            <a href="/admin/head" class="sidebar-link">
+            <box-icon name='home-alt-2' type='solid' color='#ffffff' ></box-icon>        
+          <span>&nbsp;Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.profile ? 'active' : '' }}">
+            <a href="/admin/head/profile" class="sidebar-link">
+              <box-icon name='user' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Profile</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.admin ? 'active' : '' }}">
+            <a href="/admin/head/register/admin" class="sidebar-link">
+              <box-icon name='user-plus' type='solid' color='#ffffff' ></box-icon>
+              <span>&nbsp;Add Asssistant Admin</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.register ? 'active' : '' }}">
+            <a href="/admin/head/register/hospital" class="sidebar-link">
+              <box-icon name='file-plus' type='solid' color='#fffafa' ></box-icon>
+              <span>&nbsp;Facility Manual Registration</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.assistantAdmin ? 'active' : '' }}">
+            <a href="/admin/head/registered/admin" class="sidebar-link">
+              <box-icon name='user-pin' color='#fff9f9' ></box-icon>
+              <span>&nbsp;Assistant Admin</span>
+            </a>
+          </li>
+          <li class="sidebar-item sidebar__item {{ isActive.registered ? 'active' : '' }}">
+            <a href="/admin/head/registered/hospital" class="sidebar-link">
+              <box-icon name='hdd' color='#ffffff' ></box-icon>
+              <span>&nbsp;Registered Health Facilities</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown sidebar__multi {{ isActive.request ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#auth"
+              aria-expanded="false"
+              aria-controls="auth"
+            >
+              <box-icon type='solid' color="#ffffff" name='check-shield'></box-icon>
+              <span>&nbsp;Registration Request</span>
+            </a>
+            <ul
+              id="auth"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/admin/head/approved/hospital" class="sidebar-link {{ isActive.requestApprove ? 'active-sub' : '' }}">Approve</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/admin/head/pending/hospital" class="sidebar-link {{ isActive.requestPending ? 'active-sub' : '' }}">Pending</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-item">
+            <a
+              href="#"
+              class="sidebar-link collapsed has-dropdown {{ isActive.archived ? 'active' : '' }}"
+              data-bs-toggle="collapse"
+              data-bs-target="#archived"
+              aria-expanded="false"
+              aria-controls="archived"
+            >
+              <box-icon name='archive' color="#ffffff"></box-icon>
+              <span>&nbsp;Archived</span>
+            </a>
+            <ul
+              id="archived"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="/admin/head/archived/approve/hospital" class="sidebar-link {{ isActive.approveArchive ? 'active-sub' : '' }} ">Approve</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="/admin/head/archived/decline/hospital" class="sidebar-link {{ isActive.declinedArchive ? 'active-sub' : '' }}">Declined</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-item">
+            <a href="/admin/head/changepassword" class="sidebar-link {{ isActive.changePassword ? 'active' : '' }}">
+              <box-icon name='cog' color='#ffffff' ></box-icon>
+              <span>&nbsp;Setting</span>
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a href="/admin/head/logout" class="sidebar-link logout">
+           <box-icon name='log-out' color='#fafafa' ></box-icon>
+            <span>&nbsp; Logout</span>
+          </a>
+        </div>
+      </aside>
+    <div class="main">
+     <div class="card card-nav">
+      <div class="card-body d-flex justify-content-end">
+      <div class="dropdown user-dropdown-menu end " width="20px">
+                    <a href="#" class="text-decoration-none d-flex align-items-end" id="userDropDownMenu" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                      <box-icon name='user-circle' color='rgb(1 142 252)' ></box-icon>
+                        <span class="mr-3">{{ auth.name }}</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropDownMenu">
+                        <li>
+                              <a href="/admin/head/logout">
+                                <button class="dropdown-item" href="#">Log Out</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    </div>
+    </div>
+    </body>
+</html>

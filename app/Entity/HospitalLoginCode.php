@@ -4,12 +4,13 @@ declare(strict_types = 1);
 
 namespace App\Entity;
 
+use App\Entity\Hospital;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\GeneratedValue;
-use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
 #[Entity, Table('hospital_login_codes')]
 class HospitalLoginCode

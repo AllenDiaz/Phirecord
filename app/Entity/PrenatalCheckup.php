@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Doctor;
 use App\Entity\Patient;
 use App\Entity\Hospital;
+use App\Entity\Prescription;
 use Doctrine\ORM\Mapping\Id;
+use App\Entity\RequestCheckup;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

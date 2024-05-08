@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Hospital;
 use Doctrine\ORM\Mapping\Id;
+use App\Entity\AdmissionForm;
+use App\Entity\DoctorLoginCode;
+use App\Entity\PrenatalCheckup;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use App\Contracts\DoctorInterface;
+use App\Entity\MedicalCertificate;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\PreUpdate;

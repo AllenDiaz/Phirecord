@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function () {
           })
   } else if (viewPdf) {
         const medicalForm = viewPdf.getAttribute("data-id");
-         window.open(`/patient/medicalCertificate/${medicalForm}/pdf`, `_blank`);
+         window.open(`/patient/medicalform/${medicalForm}/pdf`, `_blank`);
        }
 
     

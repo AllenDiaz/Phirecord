@@ -64,11 +64,11 @@ class AuthHospital implements AuthHospitalInterface
             return AuthAttemptStatus::FAILED;
         }
 
-        // if ($hospital->hasTwoFactorAuthEnabled()) {
-        //     $this->startLoginWith2FA($hospital);
+        if ($hospital->hasTwoFactorAuthEnabled()) {
+            $this->startLoginWith2FA($hospital);
 
-        //     return AuthAttemptStatus::TWO_FACTOR_AUTH;
-        // }
+            return AuthAttemptStatus::TWO_FACTOR_AUTH;
+        }
 
         $this->logIn($hospital);
 

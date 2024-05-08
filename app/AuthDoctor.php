@@ -60,11 +60,11 @@ class AuthDoctor implements AuthDoctorInterface
         if (! $doctor || ! $this->checkCredentials($doctor, $credentials)) {
             return AuthAttemptStatus::FAILED;
         }
-        // if ($doctor->hasTwoFactorAuthEnabled()) {
-        //     $this->startLoginWith2FA($doctor);
+        if ($doctor->hasTwoFactorAuthEnabled()) {
+            $this->startLoginWith2FA($doctor);
 
-        //     return AuthAttemptStatus::TWO_FACTOR_AUTH;
-        // }
+            return AuthAttemptStatus::TWO_FACTOR_AUTH;
+        }
 
         $this->logIn($doctor);
 

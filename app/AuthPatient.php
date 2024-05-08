@@ -60,11 +60,11 @@ class AuthPatient implements AuthPatientInterface
         if (! $patient || ! $this->checkCredentials($patient, $credentials)) {
             return AuthAttemptStatus::FAILED;
         }
-        // if ($patient->hasTwoFactorAuthEnabled()) {
-        //     $this->startLoginWith2FA($patient);
+        if ($patient->hasTwoFactorAuthEnabled()) {
+            $this->startLoginWith2FA($patient);
 
-        //     return AuthAttemptStatus::TWO_FACTOR_AUTH;
-        // }
+            return AuthAttemptStatus::TWO_FACTOR_AUTH;
+        }
 
         $this->logIn($patient);
 

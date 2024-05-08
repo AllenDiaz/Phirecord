@@ -62,11 +62,11 @@ class AuthAdmin implements AuthAdminInterface
         if (! $admin || ! $this->checkCredentials($admin, $credentials)) {
             return AuthAttemptStatus::FAILED;
         }
-        // if ($admin->hasTwoFactorAuthEnabled()) {
-        //     $this->startLoginWith2FA($admin);
+        if ($admin->hasTwoFactorAuthEnabled()) {
+            $this->startLoginWith2FA($admin);
 
-        //     return AuthAttemptStatus::TWO_FACTOR_AUTH;
-        // }
+            return AuthAttemptStatus::TWO_FACTOR_AUTH;
+        }
 
         $this->logIn($admin);
 

@@ -193,6 +193,7 @@ class PatientService
     }
      public function accept(Patient $patient): Patient
     {
+        $patient->setApprovedAt(new \DateTime);
         $patient->setStatus('1');
         return $patient;
     }

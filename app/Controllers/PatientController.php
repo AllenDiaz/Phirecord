@@ -536,6 +536,7 @@ class PatientController
             // $firstName = trim($fullName[0]); 
             $dompdf->stream('AdmissionRecord'. $admissionForm->getRequestAdmission()->getAdmissionCode() . $admissionForm->getHospital()->getName() .'.pdf', array('Attachment' => 0));
      
+            return $response;
 }
      public function getCheckupReference(Request $request, Response $response,  PrenatalCheckup $prenatalCheckup): Response
      {
@@ -621,6 +622,7 @@ class PatientController
             // $fullName = explode(' ', $text);
             // $firstName = trim($fullName[0]); 
             $dompdf->stream('CheckupForm'. $prenatalCheckup->getHospital()->getName() .'.pdf', array('Attachment' => 0));
+            return $response;
      
 }
 
@@ -709,6 +711,7 @@ class PatientController
             // $fullName = explode(' ', $text);
             // $firstName = trim($fullName[0]); 
             $dompdf->stream('medicalCertificate'. $medicalCertificate->getHospital()->getName() .'.pdf', array('Attachment' => 0));
+            return $response;
      
 }
     public function changePassword(Response $response, Request $request): Response

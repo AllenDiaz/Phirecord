@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
                             Details
                         </button>
                         </a>
-                         <button class="ms-2 btn btn-outline-primary download-reference-btn" data-id="${row.id}">Print Reference Number</button>
+                         <button class="ms-2 btn btn-outline-primary download-reference-btn" data-id="${row.id}">Reference Number</button>
                     </div>
                 `,
       },

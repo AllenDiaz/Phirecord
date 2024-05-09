@@ -524,7 +524,7 @@ class HospitalController
         return $response;
     }
 
-    public function rejectDoctor(Response $response, Doctor $doctor): Response
+    public function rejectDoctor(Request $request, Response $response, Doctor $doctor): Response
     {
         $hospital = $request->getAttribute('hospital');
         if($doctor->getHospital()->getId() !== $hospital->getId()) {

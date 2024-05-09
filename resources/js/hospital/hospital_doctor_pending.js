@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function () {
               if (result.isConfirmed) {
                     Swal.fire({
                     title: "Note!",
-                    text: "Hospital is rejected.",
+                    text: "Doctor is rejected.",
                     icon: "success"
                     });
                   get(`/hospital/doctor/reject/${doctorId}`)

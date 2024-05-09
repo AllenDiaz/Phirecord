@@ -52,7 +52,7 @@ window.addEventListener("DOMContentLoaded", function () {
               text: "Your file has been deleted.",
               icon: "success",
             });
-            get(`/hospital/refer/reject/${referId}`).then((response) => {
+            del(`/hospital/refer/reject/${referId}`).then((response) => {
               if (response.ok) {
                 table.draw();
               }

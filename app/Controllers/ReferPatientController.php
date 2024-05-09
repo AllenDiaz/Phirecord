@@ -252,6 +252,8 @@ class ReferPatientController
             // $fullName = explode(' ', $text);
             // $firstName = trim($fullName[0]); 
             $dompdf->stream('Referral'. $referral->getHospital()->getName() .'.pdf', array('Attachment' => 0));
+
+            return $response;
     }
     public function rejectReferral(Request $request, Response $response, Referral $referral): Response
     {

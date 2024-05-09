@@ -82,7 +82,7 @@ window.addEventListener("DOMContentLoaded", function () {
                                     </a>
                                     <a class="dropdown-item add-refer-btn" href="#" data-id="${row.id}"
                                     data-name="${row.name}" data-address="${row.address}" data-gender="${row.gender}">
-                                    <i class="bi bi-plus"></i> Patient Refferal 
+                                    <i class="bi bi-plus"></i> Patient Referral 
                                     </a>
                                 </li>
                             </ul>

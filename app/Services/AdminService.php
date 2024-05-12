@@ -103,7 +103,7 @@ public function __construct(
                     ->getRepository(Hospital::class)
                     ->createQueryBuilder('h')
                     ->where('h.status = :status and h.isArchived = :archive')
-                    ->setParameter('status', Status::Pending)
+                    ->setParameter('status', '0')
                     ->setParameter('archive', FALSE);
 
         $hospital = $qb->getQuery()->getScalarResult();
@@ -117,7 +117,7 @@ public function __construct(
                     ->getRepository(Doctor::class)
                     ->createQueryBuilder('d')
                     ->where('d.status = :status and d.isArchived = :archive')
-                    ->setParameter('status', Status::Pending)
+                    ->setParameter('status', '0')
                     ->setParameter('archive', FALSE);
 
         $doctor = $qb->getQuery()->getScalarResult();
@@ -131,7 +131,7 @@ public function __construct(
                     ->getRepository(Patient::class)
                     ->createQueryBuilder('p')
                     ->where('p.status = :status and p.isArchived = :archive')
-                    ->setParameter('status', Status::Pending)
+                    ->setParameter('status', '0')
                     ->setParameter('archive', FALSE);
 
         $patient = $qb->getQuery()->getScalarResult();

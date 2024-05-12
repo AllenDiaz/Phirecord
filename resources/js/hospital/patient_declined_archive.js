@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", function () {
       { data: "name" },
       { data: "email" },
       { data: "contactNo" },
-      { data: "approveAt" },
+      { data: "createdAt" },
       {
         sortable: false,
         data: (row) => `

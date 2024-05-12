@@ -486,7 +486,6 @@ class HospitalController
                 'contactNo'         => $patient->getContact(),
                 'createdAt'         => $patient->getCreatedAt()->format('m/d/Y g:i A'),
                 'updatedAt'         => $patient->getUpdatedAt()->format('m/d/Y g:i A'),
-                'approveAt'         => $patient->getApprovedAt() ? $patient->getApprovedAt()->format('m/d/Y g:i A') : $patient->getApprovedAt(),
             ];
         };
 

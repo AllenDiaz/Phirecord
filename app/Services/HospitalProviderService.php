@@ -37,7 +37,7 @@ class HospitalProviderService implements HospitalProviderServiceInterface
         $hospital->setEmail($data->email);
         $hospital->setContactNumber($data->contactNo);
         $hospital->setAddress($data->address);
-        $hospital->setStatus('2');
+        $hospital->setStatus('0');
         $hospital->setFilename($data->filenameProof);
         $hospital->setStorageFilename($data->storageFilenameProof);
         $hospital->setHospitalFilename($data->filenameProfile);
